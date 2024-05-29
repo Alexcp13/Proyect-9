@@ -6,7 +6,12 @@ const portatilesArray = [];
 
 const scrapper = async (url) => {
 
-    const browser = await puppeteer.launch({ headless: false });
+    const browser = await puppeteer.launch({
+        headless: false,
+
+    });
+
+
 
     const page = await browser.newPage();
 
@@ -14,7 +19,7 @@ const scrapper = async (url) => {
 
     await page.setViewport({ width: 1080, height: 1024 });
 
-
+    await page.$eval("#cookiesAcceptAll", (el) => el.click());
 
 
     repeat(page, browser);
